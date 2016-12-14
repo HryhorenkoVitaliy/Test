@@ -8,8 +8,6 @@ function moreReview()
 			$('review').update(transport.responseText);
 		}});
 	$('review-refresh-arrow').hide();
-	$('review-refresh-loading').show();		
-	$('review-refresh-loading').show();
 }
 
 function changeTop(top)
