@@ -1,0 +1,44 @@
+
+function moreReview()
+{
+	new Ajax.Request('/.review', {
+		parameters: {
+			id: id},
+		onSuccess: function (transport) {
+			$('review').update(transport.responseText);
+		}});
+	$('review-refresh-arrow').hide();
+	$('review-refresh-loading').show();		
+	$('review-refresh-loading').show();
+}
+
+function changeTop(top)
+{
+	var list = ['rating','today','week','success'];
+	for(var i=0;i<list.length;i++)
+	{
+		if(list[i] == top)
+			$('top_'+list[i]).show();
+		else
+			$('top_'+list[i]).hide();
+	}
+	setPrefCookie('index_top', top);
+}
+
+function changeDiscussing(what)
+{
+	var list = ['today','week','recent','forum'];
+	for(var i=0;i<list.length;i++)
+	{
+		if(list[i] == what)
+			$('discussing_'+list[i]).show();
+		else
+			$('discussing_'+list[i]).hide();
+	}
+	setPrefCookie('index_discussing', what);
+}
+
+angular.module('page')
+    .constant('PageData', {
+        rootAppModule: 'index'
+    });
